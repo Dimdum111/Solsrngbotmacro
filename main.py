@@ -4,6 +4,7 @@ import asyncio
 from datetime import datetime
 import threading
 from dotenv import load_dotenv
+from pyrogram.errors import FloodWait
 import os
 
 load_dotenv()
@@ -36,7 +37,17 @@ And join @solsrngsimbotnews pls"""
 
 async def rolling_loop(message):
     while rolling:
-        await message.reply("🎲 Roll")
+        try:
+            await message.reply("🎲 Roll")
+        
+        except FloodWait as e:
+            print(f"[⌛] Floodwait: Waiting for {e.value}")
+            await asyncio.sleep(e.value)
+            continue
+        
+        except Exception as e:
+            print(f"[⚠️] Error: {e}, Continuing anyways.")
+        
         await asyncio.sleep(rollcd)
 
 @app.on_message(filters.command("help", prefixes=".") & filters.me)
