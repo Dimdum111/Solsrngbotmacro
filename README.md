@@ -34,5 +34,10 @@ api_hash="Yourapi_hashHere"
 6. Authorize with your Telegram account (you'll be asked for a code, and a password if 2FA is enabled).
 7. type .help for available commands list!
 
+## NOTE
+Avoid setting `rollcd` below ~1.75 seconds — going lower increases the risk of 
+Telegram flagging/limiting your account. This project is provided as-is (see 
+[LICENSE](./LICENSE)); use it at your own risk.
+
 ## Licence
 MIT License. (See: [LICENSE](./LICENSE))
