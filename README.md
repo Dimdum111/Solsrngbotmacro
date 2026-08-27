@@ -24,14 +24,14 @@ Sol's rng bot macro is a macro for it!
 ```
 pip install -r requirements.txt
 ```
-3. Create a `.env` file in the same folder as `main.py`.
-4.Get your `api_id` and `api_hash` from http://my.telegram.org/ and add them to `.env`:
+3. Create a `.env` file in the same folder as `main.py`.  
+4.Get your `api_id` and `api_hash` from http://my.telegram.org/ and add them to `.env`:  
 ```example:
 api_id=Yourapi_idHere
 api_hash="Yourapi_hashHere"
 ```
-5. Run main.py
-6. Authorize with your Telegram account (you'll be asked for a code, and a password if 2FA is enabled).
+5. Run main.py. 
+6. Authorize with your Telegram account (you'll be asked for a code, and a password if 2FA is enabled).  
 7. type .help for available commands list!
 
 ## NOTE
