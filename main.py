@@ -13,6 +13,8 @@ app = Client('SolsRNGbotMacro', api_id=int(os.environ['api_id']), api_hash=os.en
 rollcd = 1.75 # Recomened Cooldown.
 rolling = False
 
+session_rolls = 0
+
 helpMsg = """🍀 Sol's RNG Bot macro (v0.1)
 `--=[ HELP ]=--`
 .help - This message 📃
@@ -36,9 +38,12 @@ Check .help for help:D
 And join @solsrngsimbotnews pls"""
 
 async def rolling_loop(message):
+    global session_rolls
+    
     while rolling:
         try:
             await message.reply("🎲 Roll")
+            session_rolls += 1
         
         except FloodWait as e:
             print(f"[⌛] Floodwait: Waiting for {e.value}")
@@ -61,13 +66,18 @@ async def about(client, message):
 @app.on_message(filters.command("roll", prefixes=".") & filters.me)
 async def roll(client, message):
     global rolling
+    global session_rolls
+    
     rolling = not rolling
     now = datetime.now()
     time = now.strftime("%d.%m.%Y, %H:%M:%S")
     
     if rolling:
+        session_rolls = 0
+
         await message.reply(f"[✅] Macro started at {time}, with rollcd = {rollcd}S")
         asyncio.create_task(rolling_loop(message))
     else:
-        await message.reply(f"[❌] Macro stopped at {time}, with rollcd = {rollcd}S")
+        await message.reply(f"[❌] Macro stopped at {time}\n\n[💫 STATS]:\nrollcd = {rollcd}S\nSession rolls: {session_rolls}")
+
 app.run()
