@@ -19,7 +19,7 @@ helpMsg = """🍀 Sol's RNG Bot macro (v0.1)
 `--=[ HELP ]=--`
 .help - This message 📃
 .about - About this macro 🛠️
-.setrollcd - Set's roll colldown (Wip. not implemented yet)
+.setrollcd - Set's roll colldown
 .roll - Start the macro (Toggle on/off) 🎲
 `--=[ HELP ]=--`
 
@@ -62,6 +62,19 @@ async def help(client, message):
 @app.on_message(filters.command("about", prefixes=".") & filters.me)
 async def about(client, message):
     await message.edit_text(aboutMsg)
+    
+@app.on_message(filters.command("setrollcd", prefixes=".") & filters.me)
+async def about(client, message):
+    global rollcd
+    
+    args = message.command
+    
+    if len(args) < 1:
+        await message.reply_text("[💫] Usage: .setrollcd [Cooldown]")
+        return
+
+    rollcd = float(args[1])
+    await message.reply_text(f"[✅] Roll Cooldown set to {rollcd}\n⚠️ it's better to not set your rollcd less that 1.75 seconds!")
 
 @app.on_message(filters.command("roll", prefixes=".") & filters.me)
 async def roll(client, message):
