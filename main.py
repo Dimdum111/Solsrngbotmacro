@@ -15,7 +15,7 @@ rolling = False
 
 session_rolls = 0
 
-helpMsg = """🍀 Sol's RNG Bot macro (v0.1)
+helpMsg = """🍀 Sol's RNG Bot macro (v1.1.0)
 `--=[ HELP ]=--`
 .help - This message 📃
 .about - About this macro 🛠️
@@ -26,7 +26,7 @@ helpMsg = """🍀 Sol's RNG Bot macro (v0.1)
 Macro by Dimdum111, Join @solsrngsimbotnews pls :)"""
 
 aboutMsg = """
-🍀 Sol's RNG Bot macro (v0.1) (?)
+🍀 Sol's RNG Bot macro (v1.1.0) (?)
 
 `--=[ ABOUT ]=--`
 ✦ Macro by - Dimdum111
